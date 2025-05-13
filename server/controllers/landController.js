@@ -4,11 +4,12 @@ const Land = require("../Models/landModel");
 const createLand = async (req, res) => {
   try {
     const {title,description,price,address} = req.body
-    const land = new Land({title,description,price,address})
-    await land.save()
     if(!title  || !description || !price || !address){
       res.status(400).json({message:"All fields are required!"})
     }
+    const land = new Land({title,description,price,address})
+    await land.save()
+   
    return res.status(201).json({
       success: true,
       message: "Land created successfully",
