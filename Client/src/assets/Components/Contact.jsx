@@ -10,11 +10,11 @@ const [email,setEmail]= useState("")
 const [phone,setPhone] = useState("")
 const [message,setMessage] =useState("")
 
-const hanleValidate = ()=>{
-  if(!fullname.trim() || !email.trim() || !phone.trim() || !message.trim()){
-    return alert("All fields are required!")
-  }
-}
+// const hanleValidate = ()=>{
+//   if(!fullname.trim() || !email.trim() || !phone.trim() || !message.trim()){
+//     return alert("All fields are required!")
+//   }
+// }
 const handleSubmit = async(e)=>{
   e.preventDefault()
   try {
@@ -27,9 +27,10 @@ const handleSubmit = async(e)=>{
     setPhone('')
     setMessage('')
   } catch (error) {
-    alert(error)
+    alert(error.response?.data?.message || "Something went wrong!");  
+    }
   }
-}
+
   return (
      <Element name="contact">
               <section className='w-full min-h-[80vh] bg-green-50'>
