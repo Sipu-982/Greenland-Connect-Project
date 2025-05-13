@@ -1,0 +1,8 @@
+.effect{
+    background: rgba(1, 30, 1, 0.7);
+}
+.shape{
+    
+    border-left: 100px solid transparent;  /* Horizontal side */
+  border-bottom: 100px solid rgb(0, 10, 0,0.8);
+}

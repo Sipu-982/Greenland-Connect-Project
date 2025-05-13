@@ -1,0 +1,17 @@
+.bg{
+    background-image: url('../Images/bg-wallpaper.png');
+    background-size: cover;
+    animation: moveUp 18s linear infinite alternate-reverse both;
+
+}
+@keyframes moveUp{
+    0% {
+      background-position: 0 0;
+    }
+    100% {
+      background-position: 100% 100%;
+    }
+  }
+.overlay{
+    background: rgba(4, 0, 0, 0.6);
+}

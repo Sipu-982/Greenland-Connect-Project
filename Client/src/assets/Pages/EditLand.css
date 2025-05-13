@@ -1,0 +1,17 @@
+/* .update-form{
+min-height: 400px;
+} */
+.input-field{
+    padding: 5px 0;
+}
+.input-field{
+    color: rgb(213, 207, 207);
+}
+.input-field input,textarea{
+    background: rgba(233, 231, 235, 0.1);
+    outline: none;
+    border: 1px solid rgb(255, 255, 255,0.2);
+}
+.input-field input:focus{
+ border-color: green;
+}

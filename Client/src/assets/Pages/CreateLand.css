@@ -1,0 +1,12 @@
+form input,
+form textarea{
+    margin-top: 10px;
+    outline: none;
+    transition: border-color 0.5s ease;
+}
+form input:focus{
+    border-color: green;
+}
+form textarea:focus{
+    border-color: green;
+}

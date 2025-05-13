@@ -1,0 +1,20 @@
+.about{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    align-content: center;
+    justify-content: center;
+}
+@media screen and (min-width:701px) and (max-width:1450px){
+    .about{
+        grid-template-columns: 1fr;
+ 
+    }
+}
+.about h2{
+    padding: 10px 0;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.about p{
+    font-size: 1.1em;
+}

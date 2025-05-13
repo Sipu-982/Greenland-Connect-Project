@@ -1,0 +1,27 @@
+/* .contact-form{
+
+} */
+
+.form-field{
+    padding: 8px 0;
+}
+.form-field input{
+    padding: 12px 0;
+    width: 450px;
+    outline: none;
+    border-bottom: 2px solid rgb(207, 210, 207);
+    transition: border-color 0.5s ease;
+}
+.form-field input:focus{
+    border-color: rgb(18, 66, 18);
+}
+.form-field textarea{
+    border: 2px solid rgb(207, 210, 207);
+    padding: 15px;
+    transition: border-color 0.5s;
+    outline: none;
+
+}
+.form-field textarea:focus{
+    border-color: rgb(18, 66, 18);
+}
