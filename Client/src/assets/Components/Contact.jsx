@@ -34,7 +34,7 @@ const handleSubmit = async(e)=>{
   return (
      <Element name="contact">
               <section className='w-full min-h-[80vh] bg-green-50'>
-              <div className="w-full min-h-[500px] bg-green-950">
+              <div className="w-full h-[500px] lg:min-h-[500px] md:min-h-[500px] sm:min-h-[500px] bg-green-950">
                <div className="pt-4 text-center"><h2 className='text-3xl text-green-200'>GET IN TOUCH</h2></div>
               <div className="flex flex-wrap justify-center items-center py-[80px] gap-x-[50px]">
                 
