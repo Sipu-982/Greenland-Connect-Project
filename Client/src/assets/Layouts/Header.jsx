@@ -70,9 +70,15 @@ const Header = () => {
 </ScrollLink>
         <RouterLink 
           to="/login"
-          className="nav-item cursor-pointer transition duration-500 hover:bg-black  text-[18px] py-2 px-6 rounded-md bg-green-500 text-white"
+          className="nav-item cursor-pointer transition duration-500  hover:bg-black  text-[17px] py-2 px-3 rounded-md bg-green-500 text-white"
         >
-          Login
+         Seller Login
+        </RouterLink>
+        <RouterLink 
+          to="/adminLogin"
+          className="nav-item cursor-pointer transition duration-500 hover:bg-black  text-[17px] py-2 px-3 rounded-md bg-indigo-500 text-white"
+        >
+         Admin Login
         </RouterLink>
       </div>
    </header>

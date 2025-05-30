@@ -8,6 +8,8 @@ const CreateLand = () => {
   const [description,setDescription]= useState("")
   const [price,setPrice] = useState("")
   const [address,setAddress]= useState("")
+  const [file,setFile]= useState(null)
+
   // const [imageFile, setImageFile] = useState(null);
 
   const navigate = useNavigate()
@@ -22,12 +24,20 @@ const CreateLand = () => {
         alert("No token found. Please log in again.");
         return;
       }
-      const response = await axios.post("http://localhost:3000/api/land/create",{
-        title,description,price,address
+
+      const formData= new FormData()
+      formData.append("title",title)
+      formData.append("description",description)
+      formData.append("price",price)
+      formData.append("address",address)
+      formData.append("image",file)
+
+      const response = await axios.post("http://localhost:3000/api/land/create",formData,{
       
-      },{
+      
         headers:{
           Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
         },
       }) 
       alert(response.data.message)
@@ -46,8 +56,16 @@ const CreateLand = () => {
       // console.error("Error creating land:", error);
       alert(error.response?.data?.message || "Something went wrong!");    }
   }
+
+  const handleReset =()=>{
+    setTitle('')
+    setDescription('')
+    setPrice('')
+    setAddress('')
+    setFile(null);
+  }
   return (
-    <div className="flex justify-center pt-[50px]">
+    <div className="flex justify-center">
     <div className="bg-gray-900 text-white w-full max-w-[700px] p-6 rounded-lg shadow-lg mx-5 mt-[70px]">
       <h2 className="text-2xl font-bold mb-4">Create Land</h2>
       <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
@@ -73,7 +91,7 @@ const CreateLand = () => {
           className="p-2 rounded bg-gray-800 border border-gray-700" value={address} onChange={(e) => setAddress(e.target.value)}
 
         />
-         <input type="file" id="file" name="file" className="p-2 rounded bg-gray-800 border border-gray-700"
+         <input type="file" id="file" onChange={(e)=>setFile(e.target.files[0])} name="file" className="p-2 rounded bg-gray-800 border border-gray-700"
 />
       <div className="flex space-x-3">
         <button
@@ -82,7 +100,8 @@ const CreateLand = () => {
         >
           Submit
         </button>
-        <Link to="/dashboard" className='p-2 bg-red-500 rounded transition duration-500 hover:opacity-75'>Cancel</Link>
+        {/* <Link to="/dashboard" >Cancel</Link> */}
+        <button type='button' className='p-2 bg-red-500 rounded transition duration-500 hover:opacity-75' onClick={handleReset}>Cancel</button>
         </div>
 
       </form>

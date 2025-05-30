@@ -1,0 +1,28 @@
+.dash-card {
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.dash-card:hover {
+  transform: translateY(-4px); 
+}
+
+.dash-card::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80%;
+  height: 20px;
+  background: linear-gradient(90deg, #00ff00, #00ccff, #ff00ff); /* Gradient colors */
+  filter: blur(8px);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.dash-card:hover::after {
+  opacity: 1;
+}

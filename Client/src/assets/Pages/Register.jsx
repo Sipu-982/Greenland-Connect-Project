@@ -8,50 +8,33 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
   const [password, setPassword] = useState('');
+  const [file,setFile]= useState(null)
   const navigate = useNavigate();
 
-  const validateForm = () => {
-    if (!name.trim()) {
-      alert('Name is required!');
-      return false;
-    }
-    if (!email.trim()) {
-      alert('Email is required!');
-      return false;
-    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
-      alert('Invalid email format!');
-      return false;
-    }
-    if (!phone.trim()) {
-      alert('Phone is required!');
-      return false;
-    }
-    if (!password.trim()) {
-      alert('Password is required!');
-      return false;
-    }
-    return true;
-  };
+  
 
   const formSubmit = async (e) => {
     e.preventDefault();
 
-    if (!validateForm()) return;
-
+    const formData= new FormData()
+    formData.append("name",name)
+    formData.append("email",email)
+    formData.append("phone",phone)
+    formData.append("password",password)
+    formData.append("image",file)
     try {
-      const response = await axios.post('http://localhost:3000/api/seller/sellerReg', {
-        name,
-        email,
-        phone,
-        password,
+      const response = await axios.post('http://localhost:3000/api/seller/sellerReg',formData,{
+        headers:{
+          "Content-Type": "multipart/form-data",
+        }
       });
-
       alert(response.data.message || 'Registration successful!');
 
       const sellerData = {
         fullName: name,
         email,
         phone,
+        file
       };
       localStorage.setItem('sellerInfo', JSON.stringify(sellerData));
 
@@ -59,20 +42,19 @@ const Register = () => {
       setEmail('');
       setPhone('');
       setPassword('');
+      setFile(null)
 
       setTimeout(() => {
         navigate('/login');
       }, 2000);
     } catch (error) {
-      console.error(error);
-      const errMsg =
-        error.response?.data?.message || error.response?.data?.error || 'Something went wrong!';
-      alert(errMsg);
-    }
+            alert(error.response?.data?.message || "Something went wrong!");    
+          }
+    
   };
 
   return (
-    <div className="bg-neutral-100 w-full min-h-[90vh] flex justify-center items-center">
+    <div className="bg-neutral-200 w-full min-h-[100vh] flex justify-center items-center">
       <div className="form w-120 min-h-[500px] mt-[50px] flex justify-center items-center shadow-md bg-white p-8 rounded-xl">
         <form onSubmit={formSubmit} className="space-y-4 w-full">
           <div className="">
@@ -86,7 +68,7 @@ const Register = () => {
               id="fullname"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              placeholder="Enter full name"
+              placeholder="Enter fullname"
               autoComplete="off"
               className="w-full p-2 border border-gray-300 rounded"
             />
@@ -126,6 +108,16 @@ const Register = () => {
               className="w-full p-2 border border-gray-300 rounded"
             />
           </div>
+           <div className="data-field">
+            <input
+              type="file"
+              name="profile"
+              id="profile"
+              onChange={(e)=>setFile(e.target.files[0])}
+              className="w-full p-2 border border-gray-300 rounded"
+            />
+          </div>
+          
           <div className="data-field">
             <button
               type="submit"

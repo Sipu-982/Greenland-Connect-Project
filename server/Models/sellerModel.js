@@ -18,7 +18,17 @@ const sellerSchema = new mongoose.Schema({
         required: [true, "Phone number is required"],
         unique: [true, "Phone number must be unique"],
       },
-    }, {timeseries:true})
+      profile:{
+        type:String,
+        required:true,
+      },
+      isActive: {
+              type: String,
+              enum: ["Active", "Inactive"],
+              default: "Inactive",
+}
+
+    }, {timestamps:true})
 
     const sellerModel= mongoose.model('seller',sellerSchema)
   module.exports=sellerModel

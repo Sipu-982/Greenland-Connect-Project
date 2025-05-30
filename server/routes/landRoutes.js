@@ -5,18 +5,19 @@ const {
   updateLand,
   deleteLand,
   getLandById,
-} = require("../controllers/landController"); // importing from landController
+  searchLand,
+} = require("../controllers/landController"); 
+const multer= require('multer')
+const storage= multer.memoryStorage()
+const upload= multer({storage})
 const authenticateSeller = require("../middleware/useMiddleware");
 
 const router = express.Router();
 
-// Create Land
-router.post("/create",authenticateSeller,createLand);
-
-// Get All Lands
+router.post("/create",authenticateSeller,upload.single("image"),createLand);
 router.get("/all",authenticateSeller,getAllLands);
 router.get("/getLandById/:id",authenticateSeller,getLandById)
-// Update Land
+router.get("/searchLand",authenticateSeller,searchLand)
 router.put("/update/:id",authenticateSeller,updateLand);
 
 // Delete Land
