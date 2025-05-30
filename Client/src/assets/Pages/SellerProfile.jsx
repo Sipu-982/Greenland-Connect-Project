@@ -46,10 +46,10 @@ const SellerProfile = () => {
 
   return (
     <div className="pt-[150px]">
-    <div className="bg-green-300 text-neutral-700 p-8 rounded shadow-lg w-full max-w-md mx-auto ">
+    <div className="bg-green-50 text-neutral-700 p-8 rounded-md shadow-lg w-full max-w-md mx-auto ">
       <div className="flex flex-col items-center">
         <div className="flex items-center justify-center mb-6 text-white rounded-full text-5xl">
-          <img src={seller.profile} className='w-45 h-25 object-contain rounded-full' alt="" />
+          <img src={seller.profile} className='w-35 h-35 object-cover rounded-full' alt="" />
         </div>
         <h1 className="text-2xl font-bold mb-2">
           {seller.fullName || 'Seller Name'}

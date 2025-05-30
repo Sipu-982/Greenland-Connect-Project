@@ -8,12 +8,12 @@ const SideBar = () => {
   const email = sellerInfo?.email || "User";
 
   return (
-    <aside className="w-[250px] bg-white text-green-700 min-h-screen fixed left-0 top-0 flex flex-col py-10 px-6">
-      <div className=" pt-10">
+    <aside className="w-[250px] bg-white font-semibold  text-green-700 min-h-screen fixed left-0 top-0 flex flex-col py-10 px-6">
+      <div className="pt-5">
        <div className="flex flex-col justify-center">
        <div className="p-2">
         <img src={profile} alt="" className='w-15 h-15 object-cover rounded-full' /></div>
-        <div className=""><span className="font-semibold">{sellerName}</span></div>
+        <div className=""><span className="font-semibold text-blue-600">{sellerName}</span></div>
         <div className=""><span className="font-semibold">{email}</span></div>
       </div>
       <hr className="w-full border-gray-500 border-2 mt-4" />
